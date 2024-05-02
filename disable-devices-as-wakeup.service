@@ -1,0 +1,10 @@
+# /etc/systemd/system
+[Unit]
+Description=Disable devices as wakeup
+
+[Service]
+ExecStart=/bin/sh -c "/bin/echo GPP0 > /proc/acpi/wakeup"
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target
