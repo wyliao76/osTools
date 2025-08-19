@@ -1,0 +1,10 @@
+# /etc/systemd/system
+[Unit]
+Description=Launch mudfish
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/launch-mudfish.sh
+
+[Install]
+WantedBy=multi-user.target
