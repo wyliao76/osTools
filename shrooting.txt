@@ -1,0 +1,22 @@
+Boot from a live boot.
+
+# find disk partitions
+lsblk -f
+
+# Mount root (example)
+sudo mount /dev/nvme0n1p2 /mnt
+
+# Mount UEFI
+sudo mount /dev/nvme0n1p1 /mnt/boot/efi
+
+# Bind system dir
+sudo mount --bind /dev /mnt/dev
+sudo mount --bind /proc /mnt/proc
+sudo mount --bind /sys /mnt/sys
+
+# Chroot into installed system
+sudo chroot /mnt
+
+# Replace broken bootloader
+sudo cp /boot/efi/EFI/Manjaro/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
+
